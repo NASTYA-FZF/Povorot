@@ -35,7 +35,7 @@ BEGIN_MESSAGE_MAP(CPovorotDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_WM_HSCROLL()
 //	ON_WM_LBUTTONDOWN()
-ON_WM_LBUTTONDOWN()
+//ON_WM_LBUTTONDOWN()
 END_MESSAGE_MAP()
 
 
@@ -106,25 +106,4 @@ void CPovorotDlg::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 	str.Format(L"%d", MyPicture.ugol_povorota);
 	ugol.SetWindowTextW(str);
 	MyPicture.Invalidate(FALSE);
-}
-
-
-void CPovorotDlg::OnLButtonDown(UINT nFlags, CPoint point)
-{
-	// TODO: добавьте свой код обработчика сообщений или вызов стандартного
-	CWnd* my_wnd = FromHandle(GetDlgItem(IDC_MY_DRAW)->GetSafeHwnd());
-	CRect frame;
-	my_wnd->GetClientRect(frame);
-	if (frame.PtInRect(point))
-	{
-		MyPicture.my_point = Gdiplus::PointF(point.x, point.y);
-		MyPicture.ugol_povorota = 0;
-		My_ugol.SetPos(0);
-		ugol.SetWindowTextW(L"0");
-		MyPicture.Invalidate(FALSE);
-	}
-	else
-	{
-		MessageBox(L"Выберите точку внутри области рисования", L"Ошибка", NULL);
-	}
 }

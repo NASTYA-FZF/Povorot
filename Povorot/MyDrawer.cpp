@@ -30,6 +30,7 @@ MyDrawer::~MyDrawer()
 
 
 BEGIN_MESSAGE_MAP(MyDrawer, CStatic)
+	ON_WM_LBUTTONDOWN()
 END_MESSAGE_MAP()
 
 
@@ -119,4 +120,13 @@ void MyDrawer::DrawItem(LPDRAWITEMSTRUCT lpDrawItemStruct)
 	gr.FillEllipse(&brush_point, rect_point);
 
 	g.DrawImage(&buffer, 0, 0, 0, 0, lpDrawItemStruct->rcItem.right, lpDrawItemStruct->rcItem.bottom, UnitPixel);
+}
+
+
+void MyDrawer::OnLButtonDown(UINT nFlags, CPoint point)
+{
+	// TODO: добавьте свой код обработчика сообщений или вызов стандартного
+	my_point = Gdiplus::PointF(point.x, point.y);
+	Invalidate(FALSE);
+	CStatic::OnLButtonDown(nFlags, point);
 }

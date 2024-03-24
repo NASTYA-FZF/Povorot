@@ -18,6 +18,7 @@ public:
 	ULONG_PTR token;
 	int ugol_povorota;
 	Gdiplus::PointF my_point;
+	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
 };
 
 
