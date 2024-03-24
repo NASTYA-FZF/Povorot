@@ -128,5 +128,6 @@ void MyDrawer::OnLButtonDown(UINT nFlags, CPoint point)
 	// TODO: добавьте свой код обработчика сообщений или вызов стандартного
 	my_point = Gdiplus::PointF(point.x, point.y);
 	Invalidate(FALSE);
+
 	CStatic::OnLButtonDown(nFlags, point);
 }
